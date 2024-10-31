@@ -9,23 +9,23 @@ services:
     envVars:
       - key: java_version
         value: 17
-      - key: spring_datasource_password
+      - key: spring.datasource.password
         value: sql1234
-      - key: cloudinary_name
+      - key: cloudinary.name
         value: dwrcew77d
-      - key: cloudinary_apikey
+      - key: cloudinary.apikey
         value: 124875963796878
-      - key: cloudinary_secret
+      - key: cloudinary.secret
         value: laCTGdd2LF8l5L4XjJzqVsKiAck
       - key: jwt.secret
         value: ${jwt.secret}
-      - key: gmail_mail_from_password
+      - key: gmail.mai.from.password
         value: klnk qwbv zkha lkhh
-      - key: gmail_mail_from
+      - key: gmail.mail.from
         value: ifrimalexandru27@gmail.com
-      - key: client_id
-        value: ${client_id}
-      - key: client_secret
-        value: ${client_secret}
-      - key: stripe_key
+      - key: client-id
+        value: ${client-id}
+      - key: client-secret
+        value: ${client-secret}
+      - key: STRIPE_KEY
         value: sk_test_51PUd3wK77lkHwPqgvsmQ2iNwuHmuN8DaKHkIqynNa7IsFRl4GgNQtFUil7aWCN7PmbsbCSTwZ1YkvEKdJDfqaHBc00vh7Bvh3A
