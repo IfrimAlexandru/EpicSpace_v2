@@ -1,0 +1,127 @@
+<!-- VIDEO -->
+
+<div class="video-container position-relative">
+  <video autoplay muted loop playsinline>
+    <source src="../../../assets/img/videoMarte.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="overlay position-absolute top-0 start-0"></div>
+  <div class="text-light position-absolute translate-middle text-left testo">
+    <h2>VERSO L'INFINITO ED OLTRE</h2>
+    <p><i>Prenota ora il tuo viaggio ai confini dell'universo</i></p>
+    <button class="btn btn-primary" (click)="prenotaOra()">Prenota ora</button>
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<div class="container-fluid section">
+  <div class="row align-items-center justify-content-center py-5">
+    <div class="col-12 col-xl-0 col-xxl-1"></div>
+    <div class="col-12 col-xl-6 col-xxl-5 text-left">
+      <h2>Benvenuti nel Futuro dei Viaggi Spaziali!</h2>
+      <p class="fs-5">
+        Sul nostro sito di prenotazione, i tuoi sogni di esplorare l'universo diventano realtà. Offriamo viaggi indimenticabili verso tutti i pianeti del Sistema Solare, inclusa la Luna e Urano. Ogni destinazione ti regala esperienze uniche, panorami mozzafiato e l'avventura di una vita. Cammina sulle superfici rocciose di Mercurio, ammira i vulcani attivi di Venere, fluttua in assenza di gravità sulla Luna o esplora gli anelli maestosi di Saturno. Abbiamo il viaggio perfetto per te. Prenota ora e unisciti a noi per un'esperienza straordinaria attraverso il cosmo!
+      </p>
+    </div>
+    <div class="col-12 col-xl-6 col-xxl-5 text-center pe-4">
+      <img class="img-section" src="../../../assets/img/jumbo1.jpg" alt="">
+    </div>
+    <div class="col-12 col-xl-0 col-xxl-1"></div>
+  </div>
+</div>
+
+<!-- Carousel Pianeti -->
+<div class="container-fluid px-0">
+  <div id="carouselPianeti" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let group of pianetiGroups; let i = index" [class.active]="i === 0" [attr.data-bs-interval]="100000">
+        <div class="d-flex justify-content-around">
+          <div *ngFor="let pianeta of group" class="text-center">
+            <img [src]="pianeta.immagine" class=""
+                 [class.saturno]="pianeta.nome === 'saturno'"
+                 [class.giove]="pianeta.nome === 'giove'"
+                 [class.marte]="pianeta.nome === 'marte'">
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPianeti" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselPianeti" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+
+<!-- SECTION 2 -->
+<div class="container-fluid section">
+  <div class="row align-items-center justify-content-center py-5">
+    <div class="col-12 col-xl-0 col-xxl-1"></div>
+    <div class="col-12 col-xl-6 col-xxl-5 text-center ps-4">
+      <img class="img-section" src="../../../assets/img/section2.png" alt="">
+    </div>
+    <div class="col-12 col-xl-6 col-xxl-5 text-left">
+      <h2>Oltre l'Orizzonte: Esplora con le Navicelle a Curvatura</h2>
+      <p class="fs-5">
+        Viaggiare con noi significa spingere i limiti dell'esplorazione spaziale con la nostra flotta di otto navicelle a motore a curvatura all'avanguardia. Progettate per garantire massima sicurezza e tempi di viaggio record, le nostre navicelle sono equipaggiate con le tecnologie aerospaziali più avanzate. Che tu stia sorvolando i crateri di Mercurio, attraversando i cieli tempestosi di Giove o esplorando gli anelli maestosi di Saturno, volerai con la migliore tecnologia disponibile. Personalizza la tua avventura scegliendo la navicella ideale e preparati a vivere l'esperienza spaziale dei tuoi sogni. Prenota ora e inizia la tua esplorazione dell'universo!
+      </p>
+      
+    </div>
+    <div class="col-12 col-xl-0 col-xxl-1"></div>
+  </div>
+</div>
+
+
+<!--CAROUSEL NAVICELLE-->
+<div class="container-fluid px-0">
+  <div id="carouselExampleInterval2" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner n">
+      <div class="carousel-item" *ngFor="let pair of navicellePairs; let i = index" [class.active]="i === 0" [attr.data-bs-interval]="100000">
+        <div class="d-flex justify-content-around text-center">
+          <div *ngFor="let navicella of pair">
+            <img [src]="navicella.immagine" class="fixed-width-image" [alt]="navicella.nome">
+            <p>{{ navicella.nome }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+
+
+
+
+<!-- RECENSIONI -->
+<div class="reviews-container">
+  <div class="header">
+    <h2>Recensioni dei nostri viaggiatori</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review" *ngFor="let recensione of recensioni">
+      <p class="review-text">{{ recensione.text }}</p>
+      <p class="review-author">- {{ formatAuthorName(recensione.user.nome, recensione.user.cognome) }}</p>
+    </div>
+  </div>
+  <div class="button-container">
+    <button class="discover-more-btn" [routerLink]="['/recensioni']">Scopri di più</button>
+  </div>
+</div>
+
+
+
+
+
+

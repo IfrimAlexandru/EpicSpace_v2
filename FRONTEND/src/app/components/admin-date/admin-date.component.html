@@ -1,0 +1,19 @@
+<div class="container date-container text-center my-4">
+  <h2 class="mb-4">Gestione Date Disponibili</h2>
+  
+  <div class="card p-3 mb-4 shadow-sm">
+    <h3 class="mb-3">Nuova Data</h3>
+    <div class="input-group">
+      <input type="date" [(ngModel)]="newData.data" class="form-control" placeholder="Data">
+      <button class="btn btn-primary" (click)="addData()">Aggiungi</button>
+    </div>
+  </div>
+  
+  <div *ngFor="let d of date" class="card p-3 mb-3 shadow-sm">
+    <div class="input-group">
+      <input type="date" [(ngModel)]="d.data" class="form-control" placeholder="Data">
+      <button class="btn btn-success mx-2" (click)="updateData(d)">Modifica</button>
+      <button class="btn btn-danger" (click)="deleteData(d.id)">Elimina</button>
+    </div>
+  </div>
+</div>

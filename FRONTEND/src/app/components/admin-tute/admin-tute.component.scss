@@ -1,0 +1,44 @@
+.tute-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tute-container h2 {
+  font-weight: 700;
+}
+
+.tute-container .card {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
+
+.tute-container .card-header {
+  font-weight: 700;
+}
+
+.tute-container .card-body {
+  padding: 1.5rem;
+}
+
+.tute-container .form-group {
+  margin-bottom: 1rem;
+}
+
+.tute-container .form-control {
+  margin-bottom: 0.5rem;
+}
+
+.tute-container .btn {
+  min-width: 100px;
+}
+
+.tute-container .btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.tute-container .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}

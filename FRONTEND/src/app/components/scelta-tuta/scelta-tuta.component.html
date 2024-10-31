@@ -1,0 +1,77 @@
+<div class="container-wrapper">
+  <img class="moon-background" src="../../../assets/img/LUNA4-Photoroom.png" alt="Moon" />
+  <div class="container" style="margin: 0 auto;">
+    <div class="d-flex justify-content-center align-items-center pb-5 position-relative">
+      <!-- <div>
+        <img src="../../../assets/img/LOGO.png" style="width: 170px" alt="logoEpicSpace" />
+      </div> -->
+      <div class="d-flex justify-content-between align-content-center">
+        <div class="mx-2">Scelta Pianeta</div>
+        <div class="mx-3"><i class="bi bi-arrow-right"></i></div>
+        <div class="mx-2">Scelta nave</div>
+        <div class="mx-3"><i class="bi bi-arrow-right"></i></div>
+        <div class="mx-2 fs-4 fw-bold">Scelta tuta</div>
+        <div class="mx-3"><i class="bi bi-arrow-right"></i></div>
+        <div class="mx-2">Riepilogo</div>
+      </div>
+      <div class="position-absolute end-0">
+        <i class="bi bi-arrow-return-left fs-2" routerLink="/sceltaNave"></i>
+      </div>
+    </div>
+    <div class="pb-5">
+      <h1 class="header">Verso l'infinito ed oltre</h1>
+      <p>Seleziona la tua destinazione e preparati al decollo!</p>
+    </div>
+
+    <!-- CAROUSEL -->
+    <div class="sub-header">
+      <div id="suitCarousel" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let pair of tutePairs; let i = index" [class.active]="i === 0">
+            <div class="d-flex justify-content-around text-center">
+              <div class="suit" *ngFor="let tuta of pair" (click)="selectSuit(tuta)">
+                <div class="position-relative">
+                  <img
+                    [ngClass]="{ 'selected': selectedSuit?.id === tuta.id }"
+                    [src]="isFront[tuta.id] ? tuta.immagineFronte : tuta.immagineRetro"
+                    alt="{{tuta.nome}}"
+                    style="width: 80px;"
+                  />
+                  
+                </div>
+                <p class="m-0">{{tuta.nome}}</p>
+                <i
+                    *ngIf="selectedSuit?.id === tuta.id"
+                    class="bi bi-arrow-repeat fs-3 m-0"
+                    (click)="toggleImage(tuta.id)"></i>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" style="width: 80px;" type="button" data-bs-target="#suitCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon me-2" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" style="width: 80px;" type="button" data-bs-target="#suitCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon ms-2" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- DATI TUTA -->
+    <div class="description-section mt-3" *ngIf="selectedSuit">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ selectedSuit.nome }}</h5>
+          <p class="card-text fs-5">{{ selectedSuit.descrizione }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-3">
+      <button class="book-btn" (click)="goToSummary()">Scelta tuta <i class="bi bi-arrow-right"></i></button>
+    </div>
+  </div>
+</div>

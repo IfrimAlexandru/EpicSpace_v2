@@ -1,0 +1,74 @@
+<div class="container-wrapper">
+  <img
+    class="moon-background"
+    src="../../../assets/img/LUNA4-Photoroom.png"
+    alt="Moon"
+  />
+  <div class="container" style="margin: 0 auto; position: relative;">
+    <div class="d-flex justify-content-center align-items-center pb-5">
+      <div class="d-flex justify-content-between align-content-center">
+        <div class="mx-2 fs-4 fw-bold">Scelta Pianeta</div>
+        <div class="mx-3"><i class="bi bi-arrow-right"></i></div>
+        <div class="mx-2">Scelta nave</div>
+        <div class="mx-3"><i class="bi bi-arrow-right"></i></div>
+        <div class="mx-2">Scelta tuta</div>
+        <div class="mx-3"><i class="bi bi-arrow-right"></i></div>
+        <div class="mx-2">Riepilogo</div>
+      </div>
+    </div>
+    <div class="pb-5">
+      <h1 class="header">Verso l'infinito ed oltre</h1>
+      <p>Seleziona la tua destinazione e preparati al decollo!</p>
+    </div>
+
+    <!-- CAROUSEL -->
+    <div class="sub-header">
+      <div id="planetCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let group of pianetiGroups; let i = index" [ngClass]="{ 'active': i === 0 }">
+            <div class="d-flex justify-content-around">
+              <div class="planet d-flex flex-column align-items-center" *ngFor="let pianeta of group" (click)="selectPlanet(pianeta)">
+                <img [src]="pianeta.immagine" [alt]="pianeta.nome"
+                  [ngClass]="{ 'saturno': pianeta.nome === 'saturno', 'giove': pianeta.nome === 'giove', 'marte': pianeta.nome === 'marte' }" />
+                <p [ngClass]="{ 'saturno': pianeta.nome === 'saturno', 'giove': pianeta.nome === 'giove', 'marte': pianeta.nome === 'marte' }">
+                  {{ pianeta.nome | uppercase }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" style="width: 80px" type="button" data-bs-target="#planetCarousel"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon me-2" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" style="width: 80px" type="button" data-bs-target="#planetCarousel"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon ms-2" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- DATI VOLO -->
+    <div class="d-flex justify-content-between" style="margin-top: 100px">
+      <div class="details d-flex justify-content-around">
+        <div class="text-start mx-3">
+          <p>Tempo di volo</p>
+          <p class="fw-bold">{{ selectedPlanet ? details.flightTime : '' }}</p>
+        </div>
+        <div class="text-start mx-3">
+          <p>Distanza dalla terra</p>
+          <p class="fw-bold">{{ selectedPlanet ? details.distance : '' }}</p>
+        </div>
+        <div class="text-start mx-3">
+          <p>Prezzo</p>
+          <p class="fw-bold">{{ selectedPlanet ? details.price : '' }}</p>
+        </div>
+      </div>
+      <div>
+        <button class="book-btn" (click)="proceedToNextStep()">Scegli navicella <i class="bi bi-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,119 @@
+.navbar-container {
+  // position: relative; /* Fa in modo che la navbar rimanga in cima alla pagina */
+  width: 100%;
+  // z-index: 1; /* Assicura che la navbar sia sopra altre parti del contenuto */
+  background-color: rgb(17, 15, 15);
+}
+.navbar-nav {
+  display: flex; /* Usa Flexbox per allineare gli elementi */
+  justify-content: center; /* Centra orizzontalmente */
+  width: 100%;
+  margin-left: -100px; /* Fai sì che la navbar-nav occupi tutta la larghezza */
+}
+.navLuna {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  z-index: 0;
+  width: 90%;
+  overflow: hidden;
+}
+
+// nav{
+  
+//   backdrop-filter: blur(5px);
+//   box-shadow: 0 0 30px rgba(154, 157, 182, 0.137);
+//   border: 0px solid rgba(100, 64, 64, 0.027);
+// }
+
+.navLuna img {
+  width: 100%;
+}
+
+.navbar-toggler {
+  margin-left: auto; /* Spinge il pulsante del toggler verso destra */
+}
+.navbar-background {
+  width: 100%;
+  max-width: 100vw; /* Assicura che l'immagine non superi la larghezza del viewport */
+  height: auto;
+  transform: rotate(45deg); /* Ruota l'immagine */
+}
+
+.nav-link {
+  
+  margin: 10px;
+  font-weight: 700;
+  color: white;
+}
+
+.logo{
+  margin-left: 3.5em;
+  width: 12em;
+  
+   
+}
+
+.navbar{
+  background-color: transparent;
+}
+
+.navbar a{
+ color: white;
+ font-size: 1.2em;
+
+}
+
+.bi-person{
+  color: white;
+  font-size: 2.3em;
+  margin-right: 1.4em;
+}
+
+.bi-person-fill{
+  font-size: 1.9em;
+  
+}
+
+.dropdown{
+  margin-right: 2em;
+}
+
+.navbar {
+  background-color: black;
+}
+
+@media (min-width: 480px) and (max-width: 575.9px){
+  .logo{
+    width: 180px;
+  
+  }
+
+  .bi-person-fill{
+    font-size: 30px ;
+  }
+
+  .bi-person{
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 991.9px) {
+  .navbar-nav {
+    text-align: center;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .navbar .logo {
+    margin-left: 1rem; /* Riduce il margin left al breakpoint di 992px */
+  }
+}
+

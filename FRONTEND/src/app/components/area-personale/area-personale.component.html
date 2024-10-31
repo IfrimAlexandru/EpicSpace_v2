@@ -1,0 +1,56 @@
+<div class="container my-4">
+  <h2 class="text-center mb-4 text-white">Area Personale</h2>
+
+  <!-- Dati Personali -->
+  <div *ngIf="user" class="card mb-4 bg-dark">
+    <div class="card-header text-white">Dati Personali</div>
+    <div class="card-body d-flex justify-content-between px-4 align-items-center">
+      <div>
+        <p class="text-white"><strong>Nome:</strong> {{ user.nome }}</p>
+        <p class="text-white"><strong>Cognome:</strong> {{ user.cognome }}</p>
+        <p class="text-white"><strong>Email:</strong> {{ user.email }}</p>
+      </div>
+      <!-- Mostra l'avatar solo se è presente -->
+      <div *ngIf="user.avatar" class="avatar-container">
+        <img [src]="user.avatar" alt="Avatar di {{ user.username }}" class="avatar-image">
+      </div>
+    </div>
+  </div>
+
+  <!-- Sezione di caricamento dell'avatar -->
+  <div class="card mb-4 bg-dark">
+    <div class="card-header text-white">Carica Avatar</div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="avatarUpload" class="text-white">Seleziona Avatar</label>
+        <input type="file" id="avatarUpload" (change)="onAvatarSelected($event)" class="form-control bg-dark text-white">
+        <button *ngIf="selectedAvatarFile" (click)="uploadAvatar()" class="btn btn-primary mt-2">Carica</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Viaggi Prenotati -->
+  <div class="card mb-4 p-3 bg-dark">
+    <div class="card-header text-white">Viaggi prenotati</div>
+    <div *ngFor="let trip of bookedTrips" class="card mb-2 trip-card bg-dark d-flex flex-row align-items-baseline justify-content-around">
+      <div class="trip-item">
+        <p class="text-white"><strong>Pianeta:</strong> {{ capitalizeFirstLetter(trip.planet) }}</p>
+        <img [src]="trip.planetImg" alt="{{ trip.planet }}" class="trip-image">
+      </div>
+      <div class="trip-item">
+        <p class="text-white"><strong>Nave:</strong> {{ trip.ship }}</p>
+        <img [src]="trip.shipImg" alt="{{ trip.spaceship }}" class="trip-ship">
+      </div>
+      <div class="trip-item">
+        <p class="text-white"><strong>Tuta:</strong> {{ trip.suit }}</p>
+        <img [src]="trip.suitImg" alt="{{ trip.suit }}" class="trip-suit">
+      </div>
+      <div class="trip-item">
+        <p class="text-white"><strong>Partenza prevista:</strong> {{ trip.dataPrenotazione | date }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logout Button -->
+  <button class="btn btn-danger mt-3" (click)="logout()">Logout</button>
+</div>

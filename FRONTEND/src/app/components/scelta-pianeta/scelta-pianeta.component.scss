@@ -1,0 +1,146 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: transparent;
+  color: #f1e7e7;
+  position: relative;
+  overflow: hidden;
+  font-family: "Orbitron", sans-serif;
+}
+
+.moon-background {
+  position: absolute;
+  right: 10%; /* Sposto leggermente verso destra */
+  transform: translateY(-25%) translateX(35%) rotate(220deg); /* Centro verticalmente e ruoto */
+  width: 85%;
+  z-index: -1;
+}
+
+.container-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  text-align: center;
+  background-color: rgb(12, 11, 11);
+  padding: 20px;
+  z-index: 2;
+  position: relative;
+  width: 80vw;
+  max-width: 2000px;
+  border: 0.1px solid rgb(104, 104, 104);
+  height: 80vh;
+}
+
+.header {
+  font-family: "Orbitron";
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.sub-header {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.planet-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.planet,
+.saturno {
+  margin: 0 20px;
+  cursor: pointer;
+  transition: transform 0.4s;
+  text-align: center;
+}
+
+.planet img,
+.saturno img {
+  margin-top: 40px;
+  width: 100px;
+}
+
+.saturno img {
+  width: 238px;
+}
+
+.planet:hover img:not(.selected),
+.saturno:hover img:not(.selected) {
+  transform: scale(1.6);
+  transition: 0.4s;
+  margin-bottom: 33px;
+}
+
+.selected {
+  filter: drop-shadow(0 0 0.45rem rgb(255, 255, 255));
+  transform: scale(1.5);
+  padding-bottom: 20px;
+}
+
+.details {
+  margin-top: 0px;
+  position: absolute;
+  top: 640px;
+}
+
+.details p {
+  margin: 0px;
+}
+
+.book-btn {
+  background-color: #ff0000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  position: absolute; 
+  bottom: 0px; 
+  right: 0px; 
+}
+
+.book-btn:hover {
+  background-color: #cc0000;
+}
+
+@media (min-width: 1500px) {
+  .carousel-item img.saturno {
+    width: 240px !important;
+  }
+
+  .carousel-item img.marte {
+    margin-right: -20px;
+  }
+
+  .carousel-item img.giove,
+  .carousel-item p.giove {
+    margin-right: -180px;
+  }
+}
+
+.planet {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.planet img {
+  margin-bottom: 10px;
+}
+
+.planet p {
+  margin: 0;
+  font-size: 1.2em;
+}
+

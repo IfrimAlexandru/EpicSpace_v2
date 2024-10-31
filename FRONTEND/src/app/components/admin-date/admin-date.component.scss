@@ -1,0 +1,43 @@
+.date-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .date-container h2 {
+    font-weight: 700;
+  }
+  
+  .date-container .card {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+  }
+  
+  .date-container .input-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .date-container .form-control {
+    margin-right: 10px;
+  }
+  
+  .date-container .btn {
+    min-width: 100px;
+  }
+  
+  .date-container .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .date-container .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .date-container .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  

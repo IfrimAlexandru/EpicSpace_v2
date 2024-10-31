@@ -1,0 +1,44 @@
+.navicelle-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.navicelle-container h2 {
+  font-weight: 700;
+}
+
+.navicelle-container .card {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
+
+.navicelle-container .card-header {
+  font-weight: 700;
+}
+
+.navicelle-container .card-body {
+  padding: 1.5rem;
+}
+
+.navicelle-container .form-group {
+  margin-bottom: 1rem;
+}
+
+.navicelle-container .form-control {
+  margin-bottom: 0.5rem;
+}
+
+.navicelle-container .btn {
+  min-width: 100px;
+}
+
+.navicelle-container .btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.navicelle-container .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}

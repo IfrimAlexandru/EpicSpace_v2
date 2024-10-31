@@ -1,0 +1,205 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: transparent;
+  color: #f1e7e7;
+  position: relative;
+  overflow: hidden; /* Ensure content does not overflow */
+}
+
+.moon-background {
+  position: absolute;
+  right: +10%; /* Move it a bit more to the right */
+  transform: translateY(-25%) translateX(+35%) rotate(220deg); /* Center vertically and rotate */
+  width: 85%; /* Maintain aspect ratio */
+  z-index: -1; /* Ensure it is behind other content */
+}
+
+.container-wrapper {
+  position: relative;
+  z-index: 1; /* Ensure content is above the background image */
+  width: 100%; /* Ensure the container-wrapper takes full width */
+  display: flex;
+  justify-content: center; /* Center the container */
+}
+
+.container {
+  text-align: center;
+  background-color: rgb(12, 11, 11); /* Dark gray background */
+  padding: 20px;
+  z-index: 2;
+  position: relative; /* Relative position to contain the absolute positioned button */
+  width: 80vw; /* Set the width to 80% of the viewport width */
+  max-width: 2000px; /* Optional: Set a maximum width */
+  border: 0.1px solid rgb(104, 104, 104);
+  height: 80vh;
+  overflow-y: auto; /* Ensure content does not overflow */
+}
+
+.header {
+  font-family: "Orbitron", sans-serif;
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.sub-header {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.planet-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.planet, .saturno {
+  margin: 0 20px;
+  cursor: pointer;
+  transition: transform 0.4s;
+  text-align: center;
+}
+
+.planet img {
+  margin-top: 40px;
+  border-radius: 50%;
+  width: 100px;
+}
+
+.saturno img {
+  margin-top: 40px;
+  width: 238px;
+}
+
+.planet:hover img:not(.selected), .saturno:hover img:not(.selected) {
+  transform: scale(1.5);
+  transition: 0.4s;
+  margin-bottom: 25px;
+}
+
+.selected {
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+  transform: scale(1.5);
+  margin-bottom: 25px; /* Add scale transform for selected state */
+}
+
+.details {
+  margin-top: 20px;
+  position: absolute;
+  bottom: 20px;
+}
+
+.details p {
+  margin: 5px 0;
+}
+
+.book-btn {
+  background-color: #ff0000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  position: absolute; /* Absolute position within the container */
+  bottom: 20px; /* 20px from the bottom of the container */
+  right: 20px; /* 20px from the right of the container */
+}
+
+.book-btn:hover {
+  background-color: #cc0000;
+}
+
+.bi-arrow-return-left {
+  cursor: pointer;
+}
+
+/* Form Styles */
+.form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  margin: 20px auto; /* Adjust margin for spacing */
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container select {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.form-container button:hover {
+  background-color: #45a049;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.image-suit {
+  max-width: 100px; /* Imposta una larghezza massima */
+  height: auto; /* Mantiene il rapporto di aspetto */
+}
+
+.image-planet{
+  max-width: 140px;
+}
+
+.image-ship{
+  max-width: 140px;
+}
+
+.choices-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.choice-item {
+  flex: 1;
+  margin: 0 10px;
+  text-align: center;
+}

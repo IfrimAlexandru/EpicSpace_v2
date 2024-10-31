@@ -1,0 +1,60 @@
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.bg-dark {
+  background-color: #343a40 !important;
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+.py-4 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.py-md-5 {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+.px-4 {
+  padding-right: 1.5rem !important;
+  padding-left: 1.5rem !important;
+}
+
+.px-md-5 {
+  padding-right: 3rem !important;
+  padding-left: 3rem !important;
+}
+
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
+.text-light {
+  color: #f8f9fa !important;
+}
+
+@media (min-width: 768px) {
+  .text-md-right {
+    text-align: right !important;
+  }
+
+  .mt-md-0 {
+    margin-top: 0 !important;
+  }
+
+  .d-md-none {
+    display: none !important;
+  }
+}

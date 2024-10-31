@@ -1,0 +1,18 @@
+# Ignora file con segreti
+BACKEND/env.properties
+
+# Cartelle di build e output
+BACKEND/target/
+FRONTEND/dist/
+FRONTEND/build/
+
+# IDE e editor
+.idea/
+.vscode/
+*.iml
+
+# Sistema operativo
+.DS_Store
+
+# Log files
+*.log

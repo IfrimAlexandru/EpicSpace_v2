@@ -1,0 +1,21 @@
+<div class="reviews-page-container">
+  <header class="page-header">
+    <h1>Recensioni dei nostri viaggiatori</h1>
+  </header>
+  <div class="reviews-grid">
+    <div *ngFor="let recensione of recensioni" class="review">
+      <p class="review-text">{{ recensione.text }}</p>
+      <div class="review-author-container my-3 justify-content-between">
+        <img [src]="recensione.user.avatar"  class="review-avatar">
+        <p class="review-author">- {{ formatAuthorName(recensione.user.nome, recensione.user.cognome) }}</p>
+      </div>
+      <button *ngIf="isAdmin" class="delete-button" (click)="deleteRecensione(recensione.id)">Cancella</button>
+    </div>
+  </div>
+  <div *ngIf="isLoggedIn" class="review-form" id="review-form">
+    <textarea [(ngModel)]="reviewText" placeholder="Scrivi la tua recensione..."></textarea><br>
+    <div class="button-container">
+      <button (click)="submitReview()">Invia</button>
+    </div>
+  </div>
+</div>

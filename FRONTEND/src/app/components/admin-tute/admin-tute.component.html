@@ -1,0 +1,76 @@
+<div class="container tute-container my-4">
+  <h2 class="text-center mb-4">Gestione Tute Spaziali</h2>
+
+  <!-- Form di Creazione Nuova Tuta -->
+  <div class="card mb-4 new-tuta-form shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h3>Nuova Tuta</h3>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group mb-3">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" [(ngModel)]="newTuta.nome" class="form-control" placeholder="Nome">
+        </div>
+        <div class="form-group mb-3">
+          <label for="descrizione">Descrizione</label>
+          <textarea id="descrizione" name="descrizione" [(ngModel)]="newTuta.descrizione" class="form-control" placeholder="Descrizione" rows="1" (input)="adjustTextareaHeight($event)"></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <label for="immagineFronte">Immagine Fronte</label>
+          <input id="immagineFronte" type="file" (change)="onFronteFileSelected($event)" class="form-control" #fronteFileInput>
+        </div>
+        <div class="form-group mb-3">
+          <label for="immagineRetro">Immagine Retro</label>
+          <input id="immagineRetro" type="file" (change)="onRetroFileSelected($event)" class="form-control" #retroFileInput>
+        </div>
+        <button type="button" (click)="addTuta()" class="btn btn-success">Aggiungi</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Form di Modifica Tuta -->
+  <div *ngFor="let tuta of tute" class="card mb-4 shadow-sm">
+    <div class="card-header bg-secondary text-white">
+      <h3>{{ tuta.nome }}</h3>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group mb-3">
+          <label for="nome-{{tuta.id}}">Nome</label>
+          <input id="nome-{{tuta.id}}" name="nome-{{tuta.id}}" [(ngModel)]="tuta.nome" class="form-control" placeholder="Nome">
+        </div>
+        <div class="form-group mb-3">
+          <label for="descrizione-{{tuta.id}}">Descrizione</label>
+          <textarea id="descrizione-{{tuta.id}}" name="descrizione-{{tuta.id}}" [(ngModel)]="tuta.descrizione" class="form-control" placeholder="Descrizione" rows="1" (input)="adjustTextareaHeight($event)"></textarea>
+        </div>
+        <div class="form-group mb-3 d-flex align-items-center">
+          <div class="flex-grow-1">
+            <label for="immagineFronte-{{tuta.id}}">Immagine Fronte</label>
+            <input id="immagineFronte-{{tuta.id}}" type="file" (change)="onFronteFileUpdateSelected($event, tuta.id)" class="form-control">
+          </div>
+          <div class="ms-3">
+            <img *ngIf="fronteImagePreview[tuta.id]; else currentFronteImage" [src]="fronteImagePreview[tuta.id]" alt="Anteprima Immagine Fronte" class="img-thumbnail" style="max-width: 100px;">
+            <ng-template #currentFronteImage>
+              <img [src]="tuta.immagineFronte" alt="Immagine Fronte Attuale" class="img-thumbnail" style="max-width: 100px;">
+            </ng-template>
+          </div>
+        </div>
+        <div class="form-group mb-3 d-flex align-items-center">
+          <div class="flex-grow-1">
+            <label for="immagineRetro-{{tuta.id}}">Immagine Retro</label>
+            <input id="immagineRetro-{{tuta.id}}" type="file" (change)="onRetroFileUpdateSelected($event, tuta.id)" class="form-control">
+          </div>
+          <div class="ms-3">
+            <img *ngIf="retroImagePreview[tuta.id]; else currentRetroImage" [src]="retroImagePreview[tuta.id]" alt="Anteprima Immagine Retro" class="img-thumbnail" style="max-width: 100px;">
+            <ng-template #currentRetroImage>
+              <img [src]="tuta.immagineRetro" alt="Immagine Retro Attuale" class="img-thumbnail" style="max-width: 100px;">
+            </ng-template>
+          </div>
+        </div>
+        <button type="button" (click)="updateTuta(tuta)" class="btn btn-success me-3">Modifica</button>
+        <button type="button" (click)="deleteTuta(tuta.id)" class="btn btn-danger">Elimina</button>
+      </form>
+    </div>
+  </div>
+</div>

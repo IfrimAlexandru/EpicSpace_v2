@@ -1,0 +1,60 @@
+<div class="container navicelle-container my-4">
+  <h2 class="text-center mb-4">Gestione Navicelle Spaziali</h2>
+
+  <!-- Form di Creazione Nuova Navicella -->
+  <div class="card mb-4 new-navicella-form shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h3>Nuova Navicella</h3>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group mb-3">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" [(ngModel)]="newNavicella.nome" class="form-control" placeholder="Nome">
+        </div>
+        <div class="form-group mb-3">
+          <label for="descrizione">Descrizione</label>
+          <input id="descrizione" name="descrizione" [(ngModel)]="newNavicella.descrizione" class="form-control" placeholder="Descrizione">
+        </div>
+        <div class="form-group mb-3">
+          <label for="immagineFile">Immagine</label>
+          <input id="immagineFile" type="file" (change)="onFileSelected($event)" class="form-control">
+        </div>
+        <button type="button" (click)="addNavicella()" class="btn btn-success">Aggiungi</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Form di Modifica Navicella -->
+  <div *ngFor="let navicella of navicelle" class="card mb-4 shadow-sm">
+    <div class="card-header bg-secondary text-white">
+      <h3>{{ navicella.nome }}</h3>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group mb-3">
+          <label for="nome-{{navicella.id}}">Nome</label>
+          <input id="nome-{{navicella.id}}" name="nome-{{navicella.id}}" [(ngModel)]="navicella.nome" class="form-control" placeholder="Nome">
+        </div>
+        <div class="form-group mb-3">
+          <label for="descrizione-{{navicella.id}}">Descrizione</label>
+          <input id="descrizione-{{navicella.id}}" name="descrizione-{{navicella.id}}" [(ngModel)]="navicella.descrizione" class="form-control" placeholder="Descrizione">
+        </div>
+        <div class="form-group mb-3 d-flex align-items-center">
+          <div class="flex-grow-1">
+            <label for="immagineFile-{{navicella.id}}">Immagine</label>
+            <input id="immagineFile-{{navicella.id}}" type="file" (change)="onFileUpdateSelected($event, navicella.id)" class="form-control">
+          </div>
+          <div class="ms-3">
+            <img *ngIf="imagePreview[navicella.id]; else currentImage" [src]="imagePreview[navicella.id]" alt="Anteprima Immagine" class="img-thumbnail" style="max-width: 100px;">
+            <ng-template #currentImage>
+              <img [src]="navicella.immagine" alt="Immagine Attuale" class="img-thumbnail" style="max-width: 100px;">
+            </ng-template>
+          </div>
+        </div>
+        <button type="button" (click)="updateNavicella(navicella)" class="btn btn-success me-3">Modifica</button>
+        <button type="button" (click)="deleteNavicella(navicella.id)" class="btn btn-danger">Elimina</button>
+      </form>
+    </div>
+  </div>
+</div>
