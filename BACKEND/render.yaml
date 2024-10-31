@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: epicspace-backend
+    env: java
+    buildCommand: "chmod +x mvnw && ./mvnw clean install -DskipTests"
+    startCommand: "java -jar target/CapstoneBackend-0.0.1-SNAPSHOT.jar"
+    region: frankfurt
+    envVars:
+      - key: JAVA_VERSION
+        value: 17
