@@ -5,6 +5,25 @@ services:
     buildCommand: "chmod +x mvnw && ./mvnw clean install -DskipTests"
     startCommand: "java -jar target/CapstoneBackend-0.0.1-SNAPSHOT.jar"
     region: frankfurt
+    rootDir: BACKEND
     envVars:
       - key: JAVA_VERSION
         value: 17
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: <password>
+      - key: CLOUDINARY_NAME
+        value: <cloudinary_name>
+      - key: CLOUDINARY_APIKEY
+        value: <cloudinary_apikey>
+      - key: CLOUDINARY_SECRET
+        value: <cloudinary_secret>
+      - key: JWT_SECRET
+        value: <jwt_secret>
+      - key: GMAIL_MAIL_FROM_PASSWORD
+        value: <gmail_password>
+      - key: CLIENT_ID
+        value: <google_client_id>
+      - key: CLIENT_SECRET
+        value: <google_client_secret>
+      - key: STRIPE_KEY
+        value: <stripe_key>
