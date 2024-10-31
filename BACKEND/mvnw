@@ -1,4 +1,5 @@
 #!/bin/sh
+# This line is added to force git to detect changes
 # ----------------------------------------------------------------------------
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
