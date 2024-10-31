@@ -5,6 +5,8 @@ import io.jsonwebtoken.security.Keys;
 
 import it.nextdevs.CapstoneBackend.exceptions.UnauthorizedException;
 import it.nextdevs.CapstoneBackend.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +14,7 @@ import java.util.Date;
 
 @Component
 public class JwtTool {
+
     @Value("${jwt.secret}")
     private String secret;
 
@@ -22,7 +25,8 @@ public class JwtTool {
     public String createToken(User user) {
         return Jwts.builder().issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + duration))
-                .subject(String.valueOf(user.getIdUtente())).signWith(Keys.hmacShaKeyFor(secret.getBytes()))
+                .subject(String.valueOf(user.getIdUtente()))
+                .signWith(Keys.hmacShaKeyFor(secret.getBytes()))
                 .compact();
     }
 
