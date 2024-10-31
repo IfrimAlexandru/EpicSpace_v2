@@ -7,23 +7,25 @@ services:
     region: frankfurt
     rootDir: BACKEND
     envVars:
-      - key: JAVA_VERSION
+      - key: java_version
         value: 17
-      - key: SPRING_DATASOURCE_PASSWORD
-        value: <password>
-      - key: CLOUDINARY_NAME
-        value: <cloudinary_name>
-      - key: CLOUDINARY_APIKEY
-        value: <cloudinary_apikey>
-      - key: CLOUDINARY_SECRET
-        value: <cloudinary_secret>
-      - key: JWT_SECRET
-        value: <jwt_secret>
-      - key: GMAIL_MAIL_FROM_PASSWORD
-        value: <gmail_password>
-      - key: CLIENT_ID
-        value: <google_client_id>
-      - key: CLIENT_SECRET
-        value: <google_client_secret>
-      - key: STRIPE_KEY
-        value: <stripe_key>
+      - key: spring_datasource_password
+        value: sql1234
+      - key: cloudinary_name
+        value: dwrcew77d
+      - key: cloudinary_apikey
+        value: 124875963796878
+      - key: cloudinary_secret
+        value: laCTGdd2LF8l5L4XjJzqVsKiAck
+      - key: jwt_secret_value
+        value: ciaociaociaociaociaociaociaociao
+      - key: gmail_mail_from_password
+        value: klnk qwbv zkha lkhh
+      - key: gmail_mail_from
+        value: ifrimalexandru27@gmail.com
+      - key: client_id
+        value: ${client_id}
+      - key: client_secret
+        value: ${client_secret}
+      - key: stripe_key
+        value: sk_test_51PUd3wK77lkHwPqgvsmQ2iNwuHmuN8DaKHkIqynNa7IsFRl4GgNQtFUil7aWCN7PmbsbCSTwZ1YkvEKdJDfqaHBc00vh7Bvh3A
