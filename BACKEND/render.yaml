@@ -18,7 +18,7 @@ services:
       - key: cloudinary.secret
         value: laCTGdd2LF8l5L4XjJzqVsKiAck
       - key: jwt.secret
-        value: ${jwt.secret}
+        value: ciaociaociaociaociaociaociaociao
       - key: gmail.mai.from.password
         value: klnk qwbv zkha lkhh
       - key: gmail.mail.from
