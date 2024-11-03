@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost:8888/'
+    apiUrl: 'https://epicspacev2-production.up.railway.app/'
     
 };
