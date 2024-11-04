@@ -21,11 +21,30 @@ export class HomeComponent implements OnInit {
   constructor(private authService: AuthService, private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
+    // Controlla se l'utente è admin
     this.isAdmin = this.authService.getUserRole() === 'ADMIN';
+    
+    // Carica i dati iniziali
     this.loadNavicelle();
     this.loadPianeti();
     this.loadRecensioni();
+    
+  
   }
+
+  ngAfterViewInit(): void {
+    const videoElement = document.querySelector('video') as HTMLVideoElement;
+    if (videoElement) {
+      // Imposta l'attributo muted e forza la riproduzione
+      videoElement.muted = true;
+      videoElement.load(); // Forza il caricamento
+      videoElement.play().catch(error => {
+        console.error('Autoplay failed:', error);
+      });
+    }
+  }
+  
+  
 
   loadNavicelle(): void {
     const headers = this.getAuthHeaders();

@@ -2,6 +2,7 @@ package it.nextdevs.CapstoneBackend.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -27,19 +28,20 @@ import java.util.List;
 public class Config implements WebMvcConfigurer {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.formLogin(AbstractHttpConfigurer::disable);
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
         httpSecurity.sessionManagement(http -> http.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         httpSecurity.cors(Customizer.withDefaults());
 
-        httpSecurity.authorizeHttpRequests(http->http.requestMatchers("/api/**").permitAll());
-
-        httpSecurity.authorizeHttpRequests(http -> http.requestMatchers("/**").permitAll());
+        // Consenti tutte le richieste, incluse le richieste OPTIONS
+        httpSecurity.authorizeHttpRequests(http -> http
+                .requestMatchers("/**").permitAll()
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Aggiungi questa riga
+        );
 
         return httpSecurity.build();
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -47,14 +49,22 @@ public class Config implements WebMvcConfigurer {
     }
 
     @Bean
-    public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin("*");
+        config.setAllowedOrigins(Arrays.asList(
+                "http://localhost:8080",
+                "http://localhost:4200",
+                "https://epic-space-app.web.app",
+                "https://epicspacev2-production.up.railway.app"
+        ));
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
+        config.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
-        return new CorsFilter(source);
+        return source;
     }
 }
+
 

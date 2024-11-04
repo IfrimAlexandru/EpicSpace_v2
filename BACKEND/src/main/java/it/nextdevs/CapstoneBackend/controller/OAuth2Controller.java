@@ -59,63 +59,50 @@ public class OAuth2Controller {
                 .build();
 
         GoogleIdToken idToken = verifier.verify(idTokenString);
-        if (idToken!= null) {
-            GoogleIdToken.Payload payload = idToken.getPayload();
-            String userId = payload.getSubject();
-            String email = payload.getEmail();
-            boolean emailVerified = payload.getEmailVerified();
-            String name = (String) payload.get("given_name");
-            String surname = (String) payload.get("family_name");
-            String pictureUrl = (String) payload.get("picture");
-
-            Optional <User> utenteOptional = userService.getUserByEmail(email);
-
-            if (utenteOptional.isEmpty()) {
-                UserDto userDto = new UserDto();
-                userDto.setEmail(email);
-                userDto.setPassword(PasswordGenerator.generatePassword(32));
-                userDto.setProvider(provider);
-                userDto.setAvatar(pictureUrl);
-                userDto.setNome(name);
-                userDto.setCognome(surname);
-                //userDto.setNewsletter(false);
-                AuthDataDto authDataDto = new AuthDataDto();
-                Integer id = userService.saveUser(userDto);
-                utenteOptional = userService.getUserById(id);
-                if (utenteOptional.isPresent()) {
-                    UserDataDto userDataDto = new UserDataDto();
-                    User utente = utenteOptional.get();
-                    userDataDto.setAvatar(utente.getAvatar());
-                    userDataDto.setNome(utente.getNome());
-                    //userDataDto.setNewsletter(utente.isNewsletter());
-                    userDataDto.setEmail(utente.getEmail());
-                    userDataDto.setCognome(utente.getCognome());
-                    userDataDto.setIdUtente(utente.getIdUtente());
-                    userDataDto.setTipoUtente(utente.getTipoUtente());
-                    authDataDto.setUser(userDataDto);
-                    authDataDto.setAccessToken(jwtTool.createToken(utente));
-                    return authDataDto;
-                } else {
-                    throw new NotFoundException("Utente non trovato");
-                }
-            } else {
-                AuthDataDto authDataDto = new AuthDataDto();
-                UserDataDto userDataDto = new UserDataDto();
-                User utente = utenteOptional.get();
-                userDataDto.setAvatar(utente.getAvatar());
-                userDataDto.setNome(utente.getNome());
-                //userDataDto.setNewsletter(utente.isNewsletter());
-                userDataDto.setEmail(utente.getEmail());
-                userDataDto.setCognome(utente.getCognome());
-                userDataDto.setIdUtente(utente.getIdUtente());
-                userDataDto.setTipoUtente(utente.getTipoUtente());
-                authDataDto.setUser(userDataDto);
-                authDataDto.setAccessToken(jwtTool.createToken(utente));
-                return authDataDto;
-            }
-        } else {
+        if (idToken == null) {
             throw new BadRequestException("Token Google non valido");
         }
+
+        GoogleIdToken.Payload payload = idToken.getPayload();
+        String email = payload.getEmail();
+        String name = (String) payload.get("given_name");
+        String surname = (String) payload.get("family_name");
+        String pictureUrl = (String) payload.get("picture");
+
+        Optional<User> utenteOptional = userService.getUserByEmail(email);
+        AuthDataDto authDataDto = new AuthDataDto();
+
+        User utente;
+        if (utenteOptional.isEmpty()) {
+            // Creazione di un nuovo utente
+            UserDto userDto = new UserDto();
+            userDto.setEmail(email);
+            userDto.setPassword(PasswordGenerator.generatePassword(32)); // Generazione di una password casuale
+            userDto.setProvider(provider);
+            userDto.setAvatar(pictureUrl);
+            userDto.setNome(name);
+            userDto.setCognome(surname);
+
+            Integer id = userService.saveUser(userDto);
+            utente = userService.getUserById(id).orElseThrow(() -> new NotFoundException("Utente non trovato"));
+        } else {
+            utente = utenteOptional.get();
+        }
+
+        // Popolazione dei dati dell'utente per la risposta
+        UserDataDto userDataDto = new UserDataDto();
+        userDataDto.setAvatar(utente.getAvatar());
+        userDataDto.setNome(utente.getNome());
+        userDataDto.setEmail(utente.getEmail());
+        userDataDto.setCognome(utente.getCognome());
+        userDataDto.setIdUtente(utente.getIdUtente());
+        userDataDto.setTipoUtente(utente.getTipoUtente());
+
+        authDataDto.setUser(userDataDto);
+        authDataDto.setAccessToken(jwtTool.createToken(utente));
+
+        return authDataDto;
     }
+
 }
 
