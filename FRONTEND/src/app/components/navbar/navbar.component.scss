@@ -83,6 +83,22 @@
 .navbar {
   background-color: black;
 }
+@media  (max-width: 479.9px){
+  .logo{
+    width: 140px;
+    margin-left: 15px;
+  
+  }
+
+  .bi-person-fill{
+    font-size: 30px ;
+  
+  }
+
+  .bi-person{
+    font-size: 30px;
+  }
+}
 
 @media (min-width: 480px) and (max-width: 575.9px){
   .logo{
