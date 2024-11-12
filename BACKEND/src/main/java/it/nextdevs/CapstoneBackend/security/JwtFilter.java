@@ -51,13 +51,18 @@ public class JwtFilter extends OncePerRequestFilter {
                 } else {
                     throw new NotFoundException("Utente non trovato con id " + userId);
                 }
+            } catch (NotFoundException e) {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, e.getMessage());
+                return; // Stoppa il filtro e non prosegue con la catena
             } catch (UnauthorizedException e) {
-                System.err.println(e.getMessage());
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token non valido o scaduto");
+                return;
             }
         }
 
         filterChain.doFilter(request, response);
     }
+
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {

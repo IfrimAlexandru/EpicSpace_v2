@@ -26,11 +26,19 @@ public class AuthService {
 
     public AuthDataDto authenticateUserAndCreateToken(UserLoginDto userLoginDTO) {
         Optional<User> userOptional = userService.getUserByEmail(userLoginDTO.getEmail());
+
+        // Log per verificare se l'utente è stato trovato
         if (userOptional.isEmpty()) {
+            System.out.println("Utente non trovato per l'email: " + userLoginDTO.getEmail());
             throw new UnauthorizedException("Error in authorization, relogin!");
         } else {
             User user = userOptional.get();
+
+            // Log per verificare se la password corrisponde
             if (passwordEncoder.matches(userLoginDTO.getPassword(), user.getPassword())) {
+                System.out.println("Autenticazione riuscita per l'utente con email: " + userLoginDTO.getEmail());
+
+                // Creazione del token JWT e della risposta AuthDataDto
                 AuthDataDto authDataDto = new AuthDataDto();
                 authDataDto.setAccessToken(jwtTool.createToken(user));
                 UserDataDto userDataDto = new UserDataDto();
@@ -42,10 +50,13 @@ public class AuthService {
                 userDataDto.setIdUtente(user.getIdUtente());
                 userDataDto.setTipoUtente(user.getTipoUtente());
                 authDataDto.setUser(userDataDto);
+
                 return authDataDto;
             } else {
+                System.out.println("Password errata per l'utente con email: " + userLoginDTO.getEmail());
                 throw new UnauthorizedException("Error in authorization, relogin!");
             }
         }
     }
+
 }
