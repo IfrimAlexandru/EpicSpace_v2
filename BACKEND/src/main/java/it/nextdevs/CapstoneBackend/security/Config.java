@@ -55,7 +55,9 @@ public class Config implements WebMvcConfigurer {
                 "http://localhost:8080",
                 "http://localhost:4200",
                 "https://epic-space-app.web.app",
-                "https://epicspacev2-production.up.railway.app"
+                "https://epicspacev2-production.up.railway.app",
+                "http://192.168.1.81:4200"
+
         ));
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");

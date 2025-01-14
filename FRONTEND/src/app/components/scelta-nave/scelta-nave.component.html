@@ -1,15 +1,10 @@
 <div class="container-wrapper">
   <img class="moon-background" src="../../../assets/img/LUNA4-Photoroom.png" alt="Moon" />
   <div class="container">
-    <div class="d-flex justify-content-center align-items-center pb-5 position-relative">
+    <div class="d-flex justify-content-center align-items-center pb-4 position-relative">
       <div class="d-flex justify-content-between align-content-center">
-        <div class="mx-2">Scelta Pianeta</div>
-        <div class="mx-3"><i class="bi bi-arrow-right"></i></div>
-        <div class="mx-2 fs-4 fw-bold">Scelta nave</div>
-        <div class="mx-3"><i class="bi bi-arrow-right"></i></div>
-        <div class="mx-2">Scelta tuta</div>
-        <div class="mx-3"><i class="bi bi-arrow-right"></i></div>
-        <div class="mx-2">Riepilogo</div>
+        <div class="fs-3 fw-bold">Scelta nave</div>
+   
       </div>
       <div class="position-absolute end-0">
         <i class="bi bi-arrow-return-left fs-2" routerLink="/sceltaPianeta"></i>
@@ -17,40 +12,51 @@
     </div>
     
     <div class="pb-5">
-      <h1 class="header">Verso l'infinito ed oltre</h1>
-      <p>Seleziona la tua destinazione e preparati al decollo!</p>
+      <h1 class="header fs-5 fs-md-4 fs-lg-3">Verso l'infinito ed oltre</h1>
+      <p class="fs-6 fs-md-4 fs-lg-3">Scegli la nave che ti accompagnerà in questa avventura!</p>
     </div>
 
-    <!-- CAROUSEL -->
-    <div class="sub-header">
-      <div id="shipCarousel" class="carousel slide">
-        <div class="carousel-inner">
-          <div class="carousel-item" *ngFor="let pair of navicellePairs; let i = index" [class.active]="i === 0">
-            <div class="d-flex justify-content-around text-center">
-              <div class="ship" *ngFor="let navicella of pair" (click)="selectShip(navicella)">
-                <img [src]="navicella.immagine" alt="{{navicella.nome}}" class="fixed-width-image" />
-                <p>{{navicella.nome}}</p>
-              </div>
-            </div>
+   <!-- CAROUSEL -->
+<div class="sub-header">
+  <div id="shipCarousel" class="carousel slide" #shipCarousel>
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let group of navicelleGroups; let i = index" [class.active]="i === 0">
+        <div class="d-flex justify-content-around text-center">
+          <div class="ship" *ngFor="let navicella of group" (click)="selectShip(navicella)">
+            <img [src]="navicella.immagine" alt="{{navicella.nome}}" class="" />
+            <p class="card-title fs-5 fs-md-4 fs-lg-3">{{navicella.nome}}</p>
           </div>
         </div>
-        <button class="carousel-control-prev" style="width: 80px;" type="button" data-bs-target="#shipCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon me-2" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" style="width: 80px;" type="button" data-bs-target="#shipCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon ms-2" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
     </div>
+    <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#shipCarousel"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon me-4" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#shipCarousel"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon ms-4" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  </div>
+</div>
+
 
     <!-- NAVICELLA DESCRIPTION -->
     <div class="description-section mt-4" *ngIf="selectedShip">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{{ selectedShip.nome }}</h5>
-          <p class="card-text fs-5">{{ selectedShip.descrizione }}</p>
+          <!-- <h5 class="card-title fs-5 fs-md-4 fs-lg-3">{{ selectedShip.nome }}</h5> -->
+          <p class="card-text fs-6 fs-md-4 fs-lg-3">{{ selectedShip.descrizione }}</p>
         </div>
       </div>
     </div>

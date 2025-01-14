@@ -69,76 +69,61 @@ h2 {
 }
 
 
+/* Sezione Viaggi Prenotati */
 .trip-card {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  justify-content: space-between; /* Distribuisce gli elementi orizzontalmente con spazio tra di loro */
   padding: 15px;
-  gap: 20px;
+  flex-wrap: wrap; /* Permette agli item di andare a capo su schermi più piccoli */
+  align-items: center; /* Centra gli elementi verticalmente */
 }
 
+/* Contenitore trip-item per Pianeta, Nave, Tuta */
 .trip-item {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; /* Centra il testo */
   padding: 10px;
+  width: 30%; /* Imposta la larghezza per ciascun trip-item per allinearsi orizzontalmente */
+  height: 100%; /* Assicura che i trip-item occupino tutta l'altezza disponibile */
+  justify-content: center; /* Allinea gli elementi verticalmente al centro */
 }
 
-.trip-image {
-  width: 150px;
-  height: 150px;
+.trip-image,
+.trip-ship {
+  width: 100%;
+  max-width: 120px;
   object-fit: cover;
   border-radius: 8px;
   margin-top: 10px;
 }
 
-.trip-ship {
-  width: 130px;
+/* Modifica solo per l'immagine della tuta */
+.trip-suit {
+  width: 100%;
+  max-width: 60px; /* Riduci la larghezza massima per evitare il taglio */
   
-  border-radius: 5px;
-  object-fit: contain; /* Evita di tagliare l'immagine */
- 
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 10px;
 }
 
-.trip-suit{
-  width: 80px;
-  
-  border-radius: 5px;
-  object-fit: contain; /* Evita di tagliare l'immagine */
+
+/* Sezione Partenza prevista */
+.departure-date {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px; /* Spazio tra i 3 div e la partenza prevista */
+  font-weight: bold;
+  color: #e0e0e0;
 }
 
-.trip-details {
-  flex: 1;
-  text-align: left;
+.departure-date p {
+  font-size: 1.2em;
 }
 
-.trip-details p {
-  margin: 0;
-}
 
-@media (max-width: 768px) {
-  .container {
-    padding: 10px;
-  }
 
-  .trip-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 
-  .trip-image-container {
-    width: 100%;
-    height: auto;
-  }
 
-  .trip-image {
-    height: auto;
-  }
-
-  .trip-thumbnail {
-    margin-left: 0;
-    margin-top: 10px;
-    
-  }
-}

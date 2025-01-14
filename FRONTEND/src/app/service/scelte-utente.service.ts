@@ -18,10 +18,11 @@ export class ScelteUtenteService {
   };
 
   private bookedTrips: any[] = [];
-
   private apiUrl = `${environment.apiUrl}api/biglietti`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.loadBookedTrips(); // Carica i viaggi prenotati all'avvio del servizio
+  }
 
   setChoice(key: string, value: any) {
     this.choices[key] = value;
@@ -69,6 +70,13 @@ export class ScelteUtenteService {
     localStorage.setItem('bookedTrips', JSON.stringify(this.bookedTrips));
   }
 
+  private loadBookedTrips() {
+    const storedTrips = localStorage.getItem('bookedTrips');
+    if (storedTrips) {
+      this.bookedTrips = JSON.parse(storedTrips);
+    }
+  }
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
@@ -78,7 +86,15 @@ export class ScelteUtenteService {
       // Server-side errors
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
+
+    // Controllo specifico per errore 401 (non autorizzato)
+    if (error.status === 401) {
+      errorMessage = 'Non autorizzato: reindirizzamento al login necessario.';
+      // Potrebbe anche essere utile fare il logout o reindirizzare qui
+    }
+
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
 }
+

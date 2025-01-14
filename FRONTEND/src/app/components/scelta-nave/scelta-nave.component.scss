@@ -35,7 +35,7 @@
   width: 80vw;
   max-width: 2000px;
   border: 0.1px solid rgb(104, 104, 104);
-  height: 83vh;
+  height: 85vh;
 }
 
 .header {
@@ -65,7 +65,7 @@
 .ship img {
   margin-top: 40px;
   border-radius: 50%;
-  width: 150px;
+  width: 115px;
 }
 
 .ship:hover img:not(.selected) {
@@ -84,16 +84,17 @@
 .book-btn {
   background-color: #ff0000;
   border: none;
-  padding: 10px 20px;
-  font-size: 1em;
+  padding: 8px 18px;
+  font-size: 0.8em;
   color: #fff;
   cursor: pointer;
   font-weight: 600;
   transition: background-color 0.3s;
-  position: absolute; /* Absolute position within the container */
-  bottom: 0px; /* 20px from the bottom of the container */
-  right: 0px; /* 20px from the right of the container */
+  position: absolute; 
+  bottom: 0px; 
+  right: 0px; 
 }
+
 
 .book-btn:hover {
   background-color: #cc0000;

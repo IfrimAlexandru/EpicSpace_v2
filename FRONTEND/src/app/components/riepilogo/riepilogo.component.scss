@@ -203,3 +203,99 @@ body {
   margin: 0 10px;
   text-align: center;
 }
+
+@media only screen and (max-width: 768px) {
+  /* Container adjustments for smaller screens */
+  .container-wrapper {
+    padding: 10px;
+  }
+
+  .container {
+    width: 100%;
+    
+    padding: 15px;
+  }
+
+  .header {
+    font-size: 2em; /* Reduce header size */
+  }
+
+  .sub-header {
+    font-size: 1em; /* Reduce sub-header size */
+  }
+
+  .choices-container {
+    flex-direction: column; /* Stack choices vertically */
+    align-items: center; /* Center align items */
+  }
+
+  .choice-item {
+    margin-bottom: 20px; /* Add spacing between items */
+  }
+
+  .image-planet, .image-ship, .image-suit {
+    max-width: 80px; /* Reduce image size for smaller screens */
+  }
+
+  .book-btn {
+    padding: 8px 16px; /* Adjust button padding */
+    font-size: 0.9em; /* Reduce button font size */
+    bottom: 10px; /* Adjust position */
+    right: 10px;
+  }
+
+  /* Form adjustments */
+  .form-container {
+    padding: 15px;
+    max-width: 90%; /* Allow the form to take most of the screen width */
+    margin: 10px auto; /* Reduce margin */
+  }
+
+  .form-container input[type="text"],
+  .form-container input[type="email"],
+  .form-container select {
+    padding: 8px; /* Adjust input padding */
+  }
+
+  .form-container button {
+    padding: 10px; /* Adjust button padding */
+    font-size: 0.9em; /* Reduce font size */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  /* Additional adjustments for very small screens */
+  .header {
+    font-size: 1.8em; /* Further reduce header size */
+  }
+
+  .choices-container {
+    flex-direction: column; /* Stack choices vertically */
+    gap: 10px;
+  }
+
+  .choice-item p {
+    font-size: 0.9em; /* Reduce text size */
+  }
+
+  .image-planet, .image-ship, .image-suit {
+    max-width: 60px; /* Further reduce image size */
+  }
+
+  .moon-background {
+    display: none; /* Hide background image for very small screens */
+  }
+
+  .book-btn {
+    font-size: 0.8em; /* Reduce button font size */
+    padding: 6px 12px;
+  }
+
+  .form-container {
+    padding: 10px;
+  }
+
+  .form-container h1 {
+    font-size: 1.2em; /* Reduce form title size */
+  }
+}

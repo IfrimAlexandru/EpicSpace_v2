@@ -34,15 +34,18 @@
     <div class="card-header text-white">Viaggi prenotati</div>
     <div *ngFor="let trip of bookedTrips" class="card mb-2 trip-card bg-dark d-flex flex-row align-items-baseline justify-content-around">
       <div class="trip-item">
-        <p class="text-white"><strong>Pianeta:</strong> {{ capitalizeFirstLetter(trip.planet) }}</p>
+        <p class="text-white mb-1"><strong>Pianeta:</strong></p>
+        <p class="planet-name text-white ">{{ capitalizeFirstLetter(trip.planet) }}</p>
         <img [src]="trip.planetImg" alt="{{ trip.planet }}" class="trip-image">
       </div>
       <div class="trip-item">
-        <p class="text-white"><strong>Nave:</strong> {{ trip.ship }}</p>
+        <p class="text-white mb-1"><strong>Nave:</strong></p>
+      <p class="ship-name text-white">{{ trip.ship }}</p>
         <img [src]="trip.shipImg" alt="{{ trip.spaceship }}" class="trip-ship">
       </div>
       <div class="trip-item">
-        <p class="text-white"><strong>Tuta:</strong> {{ trip.suit }}</p>
+        <p class="text-white mb-1"><strong>Tuta:</strong></p>
+      <p class="suit-name text-white">{{ trip.suit }}</p>
         <img [src]="trip.suitImg" alt="{{ trip.suit }}" class="trip-suit">
       </div>
       <div class="trip-item">
